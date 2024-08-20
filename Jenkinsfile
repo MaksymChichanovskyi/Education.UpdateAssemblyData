@@ -6,7 +6,7 @@ def shared = new Shared()
 
 def readAssemblyData()
 {
-    def assemblyFileContent = readFile 'env.WORKSPACE/UpdateAssemblyData.csproj'
+    def assemblyFileContent = readFile "env.WORKSPACE/UpdateAssemblyData.csproj"
     return new XmlParser().parseText(assemblyFileContent)
 }
 
