@@ -1,4 +1,7 @@
 import ExampleA.Shared
+import groovy.xml.XmlUtil
+
+
 def shared = new Shared()
 
 def readAssemblyData()
