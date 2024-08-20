@@ -1,6 +1,6 @@
 import ExampleA.Shared
 def shared = new Shared()
-//shared.defaultCheckout
+shared.defaultCheckout()
 
 /* def defaultCheckout() 
 {
