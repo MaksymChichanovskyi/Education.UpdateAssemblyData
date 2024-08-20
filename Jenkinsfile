@@ -2,7 +2,7 @@ import ExampleA.Shared
 def shared = new Shared()
 
 def readAssemblyData() {
-    def assemblyFileContent = readFile 'UpdateAssemblyData/UpdateAssemblyData.csproj' // Вказуємо правильний шлях
+    def assemblyFileContent = readFile 'UpdateAssemblyData/UpdateAssemblyData.csproj'
     return new XmlParser().parseText(assemblyFileContent)
 }
 
@@ -20,7 +20,6 @@ def agentName = 'linux && docker'
 node(agentName) {
     stage('Checkout') {
         shared.defaultCheckout()
-        sh 'ls -la UpdateAssemblyData' // Перевірка файлів у підкаталозі UpdateAssemblyData
     }
     
     def assemblyData = readAssemblyData()
