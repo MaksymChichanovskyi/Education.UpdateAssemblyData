@@ -7,8 +7,8 @@ def readAssemblyData() {
 }
 
 def saveAssemblyData(def assemblyData) {
-    def updatedAssemblyFileContent = groovy.xml.XmlUtil.serialize(assemblyData)
-    writeFile file: 'UpdateAssemblyData/UpdateAssemblyData.csproj', text: updatedAssemblyFileContent  
+    def updateAssemblyFileContent = groovy.xml.XmlUtil.serialize(assemblyData)
+    writeFile file: 'UpdateAssemblyData/UpdateAssemblyData.csproj', text: updateAssemblyFileContent  
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
