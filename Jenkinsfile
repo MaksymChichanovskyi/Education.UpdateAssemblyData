@@ -25,11 +25,12 @@ def updateAssemblyVersion(String buildNumber, def assemblyData)
   node(agentName){
     stage('Checkout'){
        shared.defaultCheckout()
+        sh 'ls -la'
     }
       def assemblyData = readAssemblyData()
     stage('UpdateAssembly'){
-       updateAssemblyVersion(env.BUILD_NUMBER,assemblyData)
-       saveAssemblyData(assemblyData)
+        updateAssemblyVersion(env.BUILD_NUMBER, assemblyData)
+        saveAssemblyData(assemblyData)
     }
     
   }
