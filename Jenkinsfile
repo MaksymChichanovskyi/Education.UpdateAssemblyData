@@ -1,6 +1,6 @@
 import ExampleA.Shared
 def shared = new Shared()
-shared.defaultCheckout()
+//shared.defaultCheckout()
 
 /* def defaultCheckout() 
 {
@@ -9,7 +9,7 @@ shared.defaultCheckout()
   def agentName = 'linux && docker'
   node(agentName){
     stage('Checkout'){
-       defaultCheckout()
+       shared.defaultCheckout()
     }
     
   }
