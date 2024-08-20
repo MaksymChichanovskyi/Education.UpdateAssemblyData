@@ -1,4 +1,4 @@
-pipeline{
+
   def defaultCheckout() 
 {
     checkout(scm)
@@ -10,4 +10,4 @@ pipeline{
     }
     
   }
-}
+
