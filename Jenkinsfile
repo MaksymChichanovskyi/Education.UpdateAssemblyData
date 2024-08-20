@@ -27,6 +27,7 @@ def updateAssembly(){
     stage('Checkout'){
        shared.defaultCheckout()
     }
+      def assemblyData = readAssemblyData()
     stage('UpdateAssembly'){
        updateAssemblyVersion(env.BUILD_NUMBER,assemblyData)
        saveAssemblyData(assemblyData)
