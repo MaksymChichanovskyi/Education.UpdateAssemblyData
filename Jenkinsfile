@@ -12,19 +12,8 @@ def saveAssemblyData(def assemblyData) {
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
-    // Знайти всі PropertyGroup елементи
-    def propertyGroups = assemblyData.'PropertyGroup'
-
-    // Оновити значення Version в кожній групі
-    propertyGroups.each { group ->
-        def versionNode = group.'Version'
-        if (versionNode) {
-            versionNode[0].value = "1.0.${buildNumber}"
-            echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
-        } else {
-            error "Version element not found in PropertyGroup."
-        }
-    }
+    assemblyData.Version[0].value = "1.0.${buildNumber}"
+    echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
 }
 
 def agentName = 'linux && docker'
