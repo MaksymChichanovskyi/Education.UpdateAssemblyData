@@ -1,18 +1,19 @@
 import ExampleA.Shared
-
 def shared = new Shared()
 
-def readCsprojFile() {
-    return readFile('UpdateAssemblyData/UpdateAssemblyData.csproj')
+def readAssemblyData() {
+    def assemblyFileContent = readFile 'UpdateAssemblyData/UpdateAssemblyData.csproj'
+    return new XmlParser().parseText(assemblyFileContent)
 }
 
-def saveCsprojFile(String content) {
-    writeFile(file: 'UpdateAssemblyData/UpdateAssemblyData.csproj', text: content)
+def saveAssemblyData(def assemblyData) {
+    def updateAssemblyFileContent = groovy.xml.XmlUtil.serialize(assemblyData)
+    writeFile file: 'UpdateAssemblyData/UpdateAssemblyData.csproj', text: updateAssemblyFileContent  
 }
 
-def updateVersionInCsproj(String content, String newVersion) {
-    def updatedContent = content.replaceAll(/(<Version>)(.*?)(<\/Version>)/, "\$1${newVersion}\$3")
-    return updatedContent
+def updateAssemblyVersion(String buildNumber, def assemblyData) {
+    assemblyData.Version[0].value = "1.0.${buildNumber}"
+    echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
 }
 
 def agentName = 'linux && docker'
@@ -21,12 +22,10 @@ node(agentName) {
         shared.defaultCheckout()
     }
     
-    def csprojContent = readCsprojFile()
+    def assemblyData = readAssemblyData()
     
     stage('UpdateAssembly') {
-        def newVersion = "1.0.${env.BUILD_NUMBER}"
-        def updatedCsprojContent = updateVersionInCsproj(csprojContent, newVersion)
-        saveCsprojFile(updatedCsprojContent)
-        echo "Updated UpdateAssemblyData.csproj with new version: ${newVersion}"
+        updateAssemblyVersion(env.BUILD_NUMBER, assemblyData)
+        saveAssemblyData(assemblyData)
     }
 }
