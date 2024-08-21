@@ -1,3 +1,3 @@
 import ExampleA.VSApp
-def vsApps = new VSApp()
-vsApps.vsApp()
+def updateApp = new VSApp()
+updateApp.vsApp()
