@@ -12,7 +12,7 @@ def saveAssemblyData(def assemblyData) {
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
-    assemblyData.Version[0].value = "1.0.${buildNumber}"
+    assemblyData.PropertyGroup[0].Version[0].value = "1.0.${buildNumber}"
     echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
 }
 
