@@ -12,13 +12,8 @@ def saveAssemblyData(def assemblyData) {
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
-    def versionNode = assemblyData.PropertyGroup.Version.find { it.name() == 'Version' }
-    if (versionNode) {
-        versionNode[0].value = "1.0.${buildNumber}"
-        echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
-    } else {
-        error "Version node not found in the UpdateAssemblyData.csproj file."
-    }
+    assemblyData.Version[0].value = "1.0.${buildNumber}"
+    echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
 }
 
 def agentName = 'linux && docker'
