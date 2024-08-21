@@ -12,22 +12,18 @@ def saveAssemblyData(def assemblyData) {
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
-    // Знаходимо елемент Version всередині PropertyGroup
-    def propertyGroup = assemblyData.'PropertyGroup'
-    
-    // Перевірка наявності PropertyGroup
-    if (propertyGroup) {
-        def versionNode = propertyGroup.Version[0]  // Отримуємо перший елемент Version
+    // Знайти всі PropertyGroup елементи
+    def propertyGroups = assemblyData.'PropertyGroup'
 
-        // Перевірка наявності Version
+    // Оновити значення Version в кожній групі
+    propertyGroups.each { group ->
+        def versionNode = group.'Version'
         if (versionNode) {
-            versionNode.value = "1.0.${buildNumber}"
+            versionNode[0].value = "1.0.${buildNumber}"
             echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
         } else {
-            error "Version element not found in UpdateAssemblyData.csproj"
+            error "Version element not found in PropertyGroup."
         }
-    } else {
-        error "PropertyGroup element not found in UpdateAssemblyData.csproj"
     }
 }
 
