@@ -2,13 +2,13 @@ import ExampleA.Shared
 def shared = new Shared()
 
 def readAssemblyData() {
-    def assemblyFileContent = readFile 'UpdateAssemblyData/UpdateAssemblyData.csproj'
+    def assemblyFileContent = readFile 'UpdateAssemblyData.csproj'
     return new XmlParser().parseText(assemblyFileContent)
 }
 
 def saveAssemblyData(def assemblyData) {
     def updateAssemblyFileContent = groovy.xml.XmlUtil.serialize(assemblyData)
-    writeFile file: 'UpdateAssemblyData/UpdateAssemblyData.csproj', text: updateAssemblyFileContent  
+    writeFile file: 'UpdateAssemblyData.csproj', text: updateAssemblyFileContent  
 }
 
 def updateAssemblyVersion(String buildNumber, def assemblyData) {
