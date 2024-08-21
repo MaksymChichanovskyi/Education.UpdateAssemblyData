@@ -15,7 +15,7 @@ def updateAssemblyVersion(String buildNumber, def assemblyData) {
     assemblyData['PropertyGroup'][0]['Version'][0].value = "1.0.${buildNumber}"
     echo "Updated UpdateAssemblyData.csproj with build number: ${buildNumber}"
 }
-def updateAsembly(){
+
 def agentName = 'linux && docker'
 node(agentName) {
     stage('Checkout') {
@@ -29,4 +29,4 @@ node(agentName) {
         saveAssemblyData(assemblyData)
     }
 }
-}
+
