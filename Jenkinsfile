@@ -1,4 +1,4 @@
-import ExampleA.Assebly
+import ExampleA.Assembly
 def assembly = new Assembly()
 assembly.windowsApp()
 
