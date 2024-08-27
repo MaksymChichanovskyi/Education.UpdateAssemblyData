@@ -1,4 +1,4 @@
-import ExampleA
+import Assembly
 
 
 def assembly = new Assembly()
