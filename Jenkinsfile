@@ -1,4 +1,10 @@
-import ExampleA.Shared
+import ExampleA.Assebly
+def assembly = new Assembly
+assembly.windowsApp()
+
+
+
+/*import ExampleA.Shared
 def shared = new Shared()
 
 def readAssemblyData() {
@@ -28,5 +34,5 @@ node(agentName) {
         updateAssemblyVersion(env.BUILD_NUMBER, assemblyData)
         saveAssemblyData(assemblyData)
     }
-}
+}*/
 
