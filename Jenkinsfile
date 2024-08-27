@@ -1,5 +1,5 @@
 import ExampleA.Assebly
-def assembly = new Assembly
+def assembly = new Assembly()
 assembly.windowsApp()
 
 
