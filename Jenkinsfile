@@ -1,4 +1,5 @@
 import ExampleA.Assembly
+import ExampleA.Shared 
 def assembly = new Assembly()
 assembly.windowsApp()
 
