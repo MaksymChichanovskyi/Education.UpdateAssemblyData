@@ -1,8 +1,8 @@
-import ExampleA.Assembly
+import jobs.VisualStudio
 
 
-def assembly = new Assembly()
-assembly.windowsApp()
+def visualstudio = new VisualStudio()
+visualstudio.windowsApp()
 
 
 
