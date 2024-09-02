@@ -2,7 +2,7 @@ import jobs.VisualStudio
 
 
 def visualstudio = new VisualStudio()
-visualstudio.windowsApp()
+visualstudio.windowsApp(String solutionPath, String configuration = 'Release')
 
 
 
