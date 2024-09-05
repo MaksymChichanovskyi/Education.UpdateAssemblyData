@@ -2,7 +2,7 @@ import jobs.VisualStudio
 
 
 def visualstudio = new VisualStudio()
-visualstudio.windowsApp(String solutionPath = 'Education.UpdateAssemblyData.sln', String configuration = 'Release', String pathtoCsproj = 'UpdateAssemblyData\Education.UpdateAssemblyData.csproj,SecondProject\\SecondProject.csproj')
+visualstudio.windowsApp(String solutionPath = 'Education.UpdateAssemblyData.sln', String configuration = 'Release', String pathtoCsproj = 'UpdateAssemblyData\\Education.UpdateAssemblyData.csproj,SecondProject\\SecondProject.csproj')
 
 
 
