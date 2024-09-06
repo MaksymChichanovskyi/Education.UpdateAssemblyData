@@ -5,7 +5,7 @@ def visualstudio = new VisualStudio()
 def pathtoCsproj = [
     'UpdateAssemblyData\\Education.UpdateAssemblyData.csproj',
     'SecondProject\\SecondProject.csproj',
-    'ThirdProject\ThirdProject.csproj'
+    'ThirdProject\\ThirdProject.csproj'
 ]
 visualstudio.windowsApp( 'Education.UpdateAssemblyData.sln', 'Release', pathtoCsproj)
 
